@@ -64,25 +64,25 @@ jobs:
     - name: Compress Artifacts ${{ matrix.openssl_version }} (x64)
       if: matrix.target == 'VC-WIN64A'
       run: |
-        cp openssl-${{ matrix.openssl_version }}/apps/openssl.exe openssl-${{ matrix.openssl_version }}/openssl.exe
-        cp openssl-${{ matrix.openssl_version }}/apps/openssl.pdb openssl-${{ matrix.openssl_version }}/openssl.pdb
-        rm -rf openssl-${{ matrix.openssl_version }}/apps
+        copy openssl-${{ matrix.openssl_version }}/apps/openssl.exe openssl-${{ matrix.openssl_version }}/openssl.exe
+        copy openssl-${{ matrix.openssl_version }}/apps/openssl.pdb openssl-${{ matrix.openssl_version }}/openssl.pdb
+        rmdir /S /Q openssl-${{ matrix.openssl_version }}/apps
         7z a "openssl-${{ matrix.openssl_version }}-x64-artifacts.zip" "openssl-${{ matrix.openssl_version }}/openssl.exe" "openssl-${{ matrix.openssl_version }}/openssl.pdb" "openssl-${{ matrix.openssl_version }}/lib*.dll" "openssl-${{ matrix.openssl_version }}/lib*.pdb"
 
     - name: Compress Artifacts ${{ matrix.openssl_version }} (x86)
       if: matrix.target == 'VC-WIN32'
       run: |
-        cp openssl-${{ matrix.openssl_version }}/apps/openssl.exe openssl-${{ matrix.openssl_version }}/openssl.exe
-        cp openssl-${{ matrix.openssl_version }}/apps/openssl.pdb openssl-${{ matrix.openssl_version }}/openssl.pdb
-        rm -rf openssl-${{ matrix.openssl_version }}/apps
+        copy openssl-${{ matrix.openssl_version }}/apps/openssl.exe openssl-${{ matrix.openssl_version }}/openssl.exe
+        copy openssl-${{ matrix.openssl_version }}/apps/openssl.pdb openssl-${{ matrix.openssl_version }}/openssl.pdb
+        rmdir /S /Q openssl-${{ matrix.openssl_version }}/apps
         7z a "openssl-${{ matrix.openssl_version }}-x86-artifacts.zip" "openssl-${{ matrix.openssl_version }}/openssl.exe" "openssl-${{ matrix.openssl_version }}/openssl.pdb" "openssl-${{ matrix.openssl_version }}/lib*.dll" "openssl-${{ matrix.openssl_version }}/lib*.pdb"
 
     - name: Compress Artifacts ${{ matrix.openssl_version }} (arm64)
       if: matrix.target == 'VC-WIN64-ARM'
       run: |
-        cp openssl-${{ matrix.openssl_version }}/apps/openssl.exe openssl-${{ matrix.openssl_version }}/openssl.exe
-        cp openssl-${{ matrix.openssl_version }}/apps/openssl.pdb openssl-${{ matrix.openssl_version }}/openssl.pdb
-        rm -rf openssl-${{ matrix.openssl_version }}/apps
+        copy openssl-${{ matrix.openssl_version }}/apps/openssl.exe openssl-${{ matrix.openssl_version }}/openssl.exe
+        copy openssl-${{ matrix.openssl_version }}/apps/openssl.pdb openssl-${{ matrix.openssl_version }}/openssl.pdb
+        rmdir /S /Q openssl-${{ matrix.openssl_version }}/apps
         7z a "openssl-${{ matrix.openssl_version }}-arm64-artifacts.zip" "openssl-${{ matrix.openssl_version }}/openssl.exe" "openssl-${{ matrix.openssl_version }}/openssl.pdb" "openssl-${{ matrix.openssl_version }}/lib*.dll" "openssl-${{ matrix.openssl_version }}/lib*.pdb"
 
     - name: Upload Artifacts ${{ matrix.openssl_version }} (x64)
