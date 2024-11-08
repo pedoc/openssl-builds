@@ -1,7 +1,10 @@
 name: Build OpenSSL (Windows x64, x86, and ARM64)
 
 on:
-  workflow_dispatch:  # Manual trigger
+  #workflow_dispatch:  # Manual trigger
+  push:
+    tags:
+      - "v*.*.*"
 
 env:
   openssl_version_underscore: 1_1_1w
